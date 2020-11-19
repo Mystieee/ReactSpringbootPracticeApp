@@ -6,12 +6,8 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact>
-          <UserForm />
-        </Route>
-        <Route path="/view">
-          <ViewUsers />
-        </Route>
+        <Route path="/" exact={true} component={UserForm}></Route>
+        <Route path="/view" exact={true} component={ViewUsers}></Route>
       </Switch>
     </Router>
   );

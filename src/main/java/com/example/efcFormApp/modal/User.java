@@ -20,6 +20,9 @@ public class User {
     @Column
     private String country;
 
+    @Column
+    private String phonenumber;
+
     @Override
     public String toString() {
         return "User{" +
@@ -28,6 +31,7 @@ public class User {
                 ", lastname='" + lastname + '\'' +
                 ", dob=" + dob +
                 ", country='" + country + '\'' +
+                ", phonenumber='" + phonenumber + '\'' +
                 '}';
     }
 
@@ -69,5 +73,13 @@ public class User {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 }

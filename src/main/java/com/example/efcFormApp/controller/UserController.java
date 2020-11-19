@@ -51,7 +51,7 @@ public class UserController {
     public ResponseEntity<Void> addUser(@RequestBody() UserDAO userDAO) {
 
         User user = new User();
-
+        System.out.println("User DAO"+ userDAO.getId()+" "+userDAO.getFirstname()+" "+userDAO.getLastname()+" "+userDAO.getDob()+" "+userDAO.getCountry());
         if (userDAO.getId() == 0 || userDAO.getId() == -1) {
             int id = userService.getAllUsers().size() + 1;
             user.setId(id);
@@ -81,6 +81,11 @@ public class UserController {
             user.setDob(userDAO.getDob());
         }
 
+        if (userDAO.getPhonenumber() == null || userDAO.getPhonenumber().isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else {
+            user.setPhonenumber(userDAO.getPhonenumber());
+        }
 
         userService.save(user);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(userDAO.getId())
@@ -122,6 +127,10 @@ public class UserController {
 
         if (userDAO.getDob() != null) {
             dbuser.setDob(userDAO.getDob());
+        }
+
+        if (userDAO.getPhonenumber() != null && !userDAO.getPhonenumber().isEmpty()) {
+            dbuser.setPhonenumber(userDAO.getPhonenumber());
         }
 
         userService.save(dbuser);

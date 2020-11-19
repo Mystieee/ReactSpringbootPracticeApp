@@ -10,6 +10,16 @@ public class UserDAO {
     private String lastname;
     private Date dob;
     private String country;
+    private String phonenumber;
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
 
     public int getId() {
         return id;
